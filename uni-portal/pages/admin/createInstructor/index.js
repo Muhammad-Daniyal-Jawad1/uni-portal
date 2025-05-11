@@ -17,10 +17,10 @@ function CreateInstructor() {
     });
 
     const handleSubmit = async () => {
-        const res = await fetch('/api/instructor/create', {  // Updated to the correct endpoint
+        const res = await fetch('/api/instructor/create', {  
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(instructorFormData)  // Use instructorFormData here
+            body: JSON.stringify(instructorFormData)  
         });
 
         if (res.ok) {
@@ -33,7 +33,7 @@ function CreateInstructor() {
     return (
         <div>
             <h1>Create Instructor</h1>
-            {Object.entries(instructorFormData).map(([key, val]) => (  // Use instructorFormData here
+            {Object.entries(instructorFormData).map(([key, val]) => ( 
                 <input
                     key={key}
                     placeholder={key}

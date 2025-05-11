@@ -14,7 +14,7 @@ export default function StudentLogin() {
         try {
             setLoading(true);
 
-            // Send login request to MongoDB API
+            
             const response = await fetch('/api/student/login', {
                 method: 'POST',
                 headers: {

@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
   try {
     const client = await clientPromise;
-    const db = client.db('UniDB'); // ✅ make sure this matches Compass
+    const db = client.db('UniPortal');  // changed by Dani
     const collection = db.collection('Attendance');
 
     const grouped = await collection.find({}).toArray();

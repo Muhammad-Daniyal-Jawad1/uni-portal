@@ -20,7 +20,7 @@ function CreateStudent() {
         const res = await fetch('/api/student/create', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(studentFormData)  // Use studentFormData here
+            body: JSON.stringify(studentFormData)  
         });
 
         

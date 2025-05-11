@@ -1,56 +1,37 @@
+import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 
 export default function TranscriptPage() {
+    const [transcript, setTranscript] = useState([]);
     const student = {
+        id: '21L-3423',
         name: 'Ali Khan',
         email: 'ali.khan@uni.edu',
         gender: 'Male',
         section: 'CS-B'
     };
 
-    const transcript = [
-        {
-            id: 'CS101',
-            title: 'Programming Fundamentals',
-            creditHours: 3,
-            grade: 'A',
-            status: 'Passed'
-        },
-        {
-            id: 'MATH101',
-            title: 'Calculus I',
-            creditHours: 3,
-            grade: 'B+',
-            status: 'Passed'
-        },
-        {
-            id: 'HIST101',
-            title: 'Pak Studies',
-            creditHours: 2,
-            grade: 'A-',
-            status: 'Passed'
-        },
-        {
-            id: 'PHY101',
-            title: 'Applied Physics',
-            creditHours: 3,
-            grade: 'B',
-            status: 'Passed'
-        },
-        {
-            id: 'ISL101',
-            title: 'Islamiyat',
-            creditHours: 2,
-            grade: 'A',
-            status: 'Passed'
-        },
-    ];
+    useEffect(() => {
+        const fetchTranscript = async () => {
+            try {
+                const response = await axios.post('/api/student/transcript', {
+                    studentId: student.id
+                });
+                setTranscript(response.data.transcript);
+            } catch (error) {
+                console.error('Error fetching transcript:', error);
+            }
+        };
+
+        fetchTranscript();
+    }, []);
 
     return (
         <div className="container py-5">
             <h2 className="text-center mb-4">Student Transcript</h2>
 
-            {/* Student Info */}
+            
             <div className="card p-4 mb-5 shadow-sm">
                 <div className="row g-3">
                     <div className="col-md-6">

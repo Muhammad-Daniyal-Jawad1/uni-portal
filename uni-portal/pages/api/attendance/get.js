@@ -1,4 +1,4 @@
-import clientPromise from '../../lib/mongodb'; // ✅ Adjusted import
+import clientPromise from '../../lib/mongodb'; 
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ message: 'Method not allowed' });
@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     }
 
     const client = await clientPromise;
-    const db = client.db('UniDB');
+    const db = client.db('UniPortal'); // changed by Dani
     const collection = db.collection('Attendance');
 
     const start = new Date(date);

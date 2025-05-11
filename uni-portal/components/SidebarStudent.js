@@ -11,7 +11,7 @@ export default function NavbarSidebarStudent() {
 
     const navItems = [
         { label: 'Home', icon: <FaHome />, path: '/student/home' },
-        { label: 'Course Registration', icon: <FaFileAlt />, path: '/course-registration' },
+        { label: 'Course Registration', icon: <FaFileAlt />, path: '/student/course-registration' },
         { label: 'Attendance', icon: <FaClipboardList />, path: '/attendance' },
         { label: 'Marks', icon: <FaCalculator />, path: '/marks' },
         { label: 'Transcript', icon: <FaFileSignature />, path: '/student/transcript' },
@@ -22,7 +22,7 @@ export default function NavbarSidebarStudent() {
             setIsVisible(false);
             setTimeout(() => {
                 setShowDropdown(false);
-            }, 300); // 0.3s = fade duration
+            }, 300); 
         } else {
             setShowDropdown(true);
             setIsVisible(true);
@@ -39,14 +39,14 @@ export default function NavbarSidebarStudent() {
         setShowDropdown(false);
     };
 
-    // Handle clicks outside the dropdown
+   
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setIsVisible(false);
                 setTimeout(() => {
                     setShowDropdown(false);
-                }, 300); // match fade out duration
+                }, 300); 
             }
         };
 
@@ -185,7 +185,7 @@ export default function NavbarSidebarStudent() {
                 ))}
             </div>
 
-            {/* Add the style jsx here */}
+            
             <style jsx>{`
                 @keyframes fadeIn {
                     from { opacity: 0; }

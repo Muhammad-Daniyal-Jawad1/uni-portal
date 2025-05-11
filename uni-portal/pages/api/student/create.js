@@ -1,4 +1,3 @@
-// pages/api/student/create.js
 import dbConnect from '@/pages/lib/dbConnect';
 import Student from '@/pages/models/Student';
 

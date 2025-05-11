@@ -19,7 +19,7 @@ export default function AttendancePage() {
   const [selectedDate, setSelectedDate] = useState('');
   const [attendance, setAttendance] = useState({});
   const [loading, setLoading] = useState(false);
-  const [fetchedAttendance, setFetchedAttendance] = useState(null); // ✅ Correct position
+  const [fetchedAttendance, setFetchedAttendance] = useState(null);
 
   const handleToggle = (studentId, status) => {
     setAttendance(prev => ({
@@ -72,7 +72,7 @@ export default function AttendancePage() {
       const data = await res.json();
 
       if (res.ok) {
-        setFetchedAttendance(data.data); // ✅ store for rendering
+        setFetchedAttendance(data.data);
       } else {
         alert(data.message || 'No record found');
         setFetchedAttendance(null);

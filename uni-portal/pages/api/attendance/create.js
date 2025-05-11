@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   try {
     const { course, date, students } = req.body;
 
-    console.log('▶️ /api/attendance/create called');
+    console.log(' /api/attendance/create called');
     console.log('Payload received:', { course, date, students });
 
     if (!course || !date || !Array.isArray(students)) {
@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     }
 
     const client = await clientPromise;
-    const db = client.db('UniDB'); // ✅ MUST match Compass
+    const db = client.db('UniPortal');  // changed by Dani
     const collection = db.collection('Attendance');
 
     const existing = await collection.findOne({
@@ -34,16 +34,16 @@ export default async function handler(req, res) {
     const record = {
       course,
       date: new Date(date),
-      students // ✅ bulk array
+      students 
     };
 
     const result = await collection.insertOne(record);
 
-    console.log('✔️ Inserted grouped record:', result.insertedId);
+    console.log(' Inserted grouped record:', result.insertedId);
 
     return res.status(201).json({ message: 'Attendance recorded', id: result.insertedId });
   } catch (err) {
-    console.error('❌ Insert failed:', err);
+    console.error(' Insert failed:', err);
     return res.status(500).json({ message: 'Server error', error: err.message });
   }
 }

@@ -6,15 +6,15 @@ export default function InstructorLogin() {
     const [instructorId, setInstructorId] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
-    const router = useRouter(); // Initialize router for redirection  
+    const router = useRouter(); 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            setLoading(true); // Show loading state
+            setLoading(true);
 
-            // Send login request to MongoDB API
+            
             const response = await fetch('/api/instructor/login', {
                 method: 'POST',
                 headers: {
@@ -27,17 +27,17 @@ export default function InstructorLogin() {
 
             if (response.ok) {
                 alert('Login Successful!');
-                localStorage.setItem('instructorId', instructorId); // Store instructor ID in localStorage
-                localStorage.setItem('password', password); // Store instructor ID in localStorage
-                router.push('/instructor/home'); // Redirect to the instructor dashboard page
+                localStorage.setItem('instructorId', instructorId); 
+                localStorage.setItem('password', password); 
+                router.push('/instructor/home'); 
             } else {
-                alert(data.message || 'Incorrect credentials!'); // Display error message from API
+                alert(data.message || 'Incorrect credentials!'); 
             }
         } catch (error) {
             console.error('Login Error:', error);
             alert('Something went wrong. Please try again later.');
         } finally {
-            setLoading(false); // Hide loading state
+            setLoading(false); 
         }
     };
 
@@ -97,7 +97,7 @@ export default function InstructorLogin() {
                             type="submit"
                             className="btn btn-primary"
                             style={{ width: '140px' }}
-                            disabled={loading} // Disable the button while loading
+                            disabled={loading} 
                         >
                             {loading ? 'Logging in...' : 'Login'}
                         </button>
@@ -116,7 +116,7 @@ export default function InstructorLogin() {
                             type="button"
                             className="btn btn-link"
                             style={{ color: '#adb5bd' }}
-                            onClick={() => router.replace('/student')} // Navigate to student login page
+                            onClick={() => router.replace('/student')}
                         >
                             Log In As Student
                         </button>

@@ -14,24 +14,18 @@ export default async function handler(req, res) {
 
     try {
         const client = await clientPromise;
-        const db = client.db('UniDB');
+        const db = client.db('UniPortal'); // changed by Dani
         const collection = db.collection('Instructors');
 
-        // Find instructor by ID
+        
         const instructor = await collection.findOne({ ID: instructorId });
 
         if (!instructor) {
             return res.status(404).json({ message: 'Incorrect ID' });
         }
 
-        // Check if the password matches
-        const passwordMatch = await bcrypt.compare(password, instructor.Password);
-
-        if (!passwordMatch) {
-            return res.status(401).json({ message: 'Incorrect password' });
-        }
-        // Return the instructor data along with success message if login is successful
-        return res.status(200).json({
+        if(password === instructor.Password){
+            return res.status(200).json({
             instructorId: instructor.ID,
             name: instructor.Name,
             email: instructor.Email,
@@ -43,6 +37,13 @@ export default async function handler(req, res) {
             dob: instructor.DoB,
             gender: instructor.Gender
         });
+        }
+        else{
+            return res.status(401).json({ message: 'Incorrect password' });
+        }
+
+    
+        
     } catch (error) {
         console.error('Login API Error:', error);
         return res.status(500).json({ message: 'Internal server error' });

@@ -35,7 +35,7 @@ export default function InstructorHome() {
     useEffect(() => {
         const fetchInstructorData = async () => {
             const instructorId = localStorage.getItem('instructorId');
-            const password = localStorage.getItem('password'); // Retrieve the password from localStorage
+            const password = localStorage.getItem('password');
 
             if (!instructorId || !password) {
                 console.error('Instructor ID or password not found in localStorage.');
@@ -46,7 +46,7 @@ export default function InstructorHome() {
                 const res = await fetch('/api/instructor/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ instructorId, password }) // Send both ID and password
+                    body: JSON.stringify({ instructorId, password }) 
                 });
 
                 try {
@@ -56,7 +56,7 @@ export default function InstructorHome() {
                         body: JSON.stringify({ instructorId, password })
                     });
 
-                    const data = await res.json(); // direct json parsing
+                    const data = await res.json(); 
                     console.log("Fetched instructor data:", data);
 
                     if (res.ok) {
@@ -73,7 +73,7 @@ export default function InstructorHome() {
                 console.error('Error:', err);
                 alert('Something went wrong while fetching instructor data');
             } finally {
-                setLoading(false); // Ensure loading is turned off after fetch completes
+                setLoading(false); 
             }
         };
 
