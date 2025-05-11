@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 
   try {
     const client = await clientPromise;
-    const db = client.db("UniPortal"); 
+    const db = client.db("UniDB"); 
     const students = db.collection("Instructors");
 
     const student = req.body;

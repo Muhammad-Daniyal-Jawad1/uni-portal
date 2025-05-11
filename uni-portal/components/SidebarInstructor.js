@@ -8,7 +8,7 @@ export default function NavbarSidebarInstructor() {
     const navItems = [
         { label: 'Home', icon: <FaHome />, path: '/home' },
         { label: 'Allocated Courses', icon: <FaFileAlt />, path: '/course-registration' },
-        { label: 'Attendance', icon: <FaClipboardList />, path: '/attendance' },
+        { label: 'Attendance', icon: <FaClipboardList />, path: '/instructor/attendance' },
         { label: 'Marks', icon: <FaCalculator />, path: '/marks' },
         { label: 'Grades', icon: <FaFileSignature />, path: '/transcript' },
     ];

@@ -12,7 +12,7 @@ export default function NavbarSidebarStudent() {
     const navItems = [
         { label: 'Home', icon: <FaHome />, path: '/student/home' },
         { label: 'Course Registration', icon: <FaFileAlt />, path: '/course-registration' },
-        { label: 'Attendance', icon: <FaClipboardList />, path: '/attendance' },
+        { label: 'Attendance', icon: <FaClipboardList />, path: '/student/attendance' },
         { label: 'Marks', icon: <FaCalculator />, path: '/marks' },
         { label: 'Transcript', icon: <FaFileSignature />, path: '/transcript' },
     ];
